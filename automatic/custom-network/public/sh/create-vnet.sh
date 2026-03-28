@@ -1,3 +1,8 @@
+#!/bin/bash
+RG_NAME=$1
+LOCATION=$2
+VNET_NAME=$3
+
 az network vnet create --name ${VNET_NAME} \
 --resource-group ${RG_NAME} \
 --location ${LOCATION} \
