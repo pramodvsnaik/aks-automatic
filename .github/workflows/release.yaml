@@ -1,10 +1,10 @@
 name: deploy-aks-automatic
 on:
-    workflow_dispatch:
-    
+ workflow_dispatch:
+   
 jobs:
   deploy-aks-automatic:
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
     steps:
         - name: checkout
           uses: actions/checkouts@v2
