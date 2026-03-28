@@ -5,6 +5,7 @@
 name: Run Azure Login with OIDC
 on: [push]
 
+ 
 permissions:
   id-token: write
   contents: read
