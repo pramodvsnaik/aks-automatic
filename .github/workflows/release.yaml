@@ -30,12 +30,11 @@ jobs:
           az group list
 
       - name: 'Set ENV Variables'
-        run: |
-          RG_NAME=automatic-rg
-          LOCATION=eastus
-          echo  "${RG_NAME} -l ${LOCATION}"
+        run: |          
+          automatic/custom-network/private/sh/define-vars.sh
+          echo "${RG_NAME} -l ${LOCATION} ${IDENTITY_NAME} ${CLUSTER_NAME}"
           automatic/custom-network/public/sh/create-rg.sh ${RG_NAME} ${LOCATION}
-          # bash automatic/custom-network/public/sh/create-uami.sh
-          # bash automatic/custom-network/public/sh/create-vnet.sh
-          # bash automatic/custom-network/public/sh/create-aks.sh
+          automatic/custom-network/public/sh/create-uami.sh ${RG_NAME} ${LOCATION} ${IDENTITY_NAME}
+          automatic/custom-network/public/sh/create-vnet.sh ${RG_NAME} ${LOCATION} ${VNET_NAME}
+          automatic/custom-network/public/sh/create-aks.sh ${RG_NAME} ${LOCATION} ${IDENTITY_NAME} ${CLUSTER_NAME}
 
