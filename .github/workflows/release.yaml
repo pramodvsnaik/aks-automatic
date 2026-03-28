@@ -1,41 +1,25 @@
-name: deploy-aks-automatic
-on:
- workflow_dispatch:
- 
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+name: Run Azure Login with OIDC
+on: [push]
+
 permissions:
   id-token: write
-
-  
+  contents: read
 jobs:
-  deploy-aks-automatic:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-        - name: checkout
-          uses: actions/checkout@v6.0.2
+      - name: 'Az CLI login'
+        uses: azure/login@8c334a195cbb38e46038007b304988d888bf676a
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-        - name: Azure Login
-          uses: Azure/login@v3
-          with:
-            client-id: ${{ secrets.AZURE_CLIENT_ID }}
-            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  
-
-        - name: deploy-aks-echo2
-          uses:  azure/cli@v2
-          with:
-            azcliversion: latest
-            inlineScript: |
-               az account show
- 
-        - name: deploy-aks1
-          run: |
-            ${{github.workspace}}/automatic/custom-network/private/sh/define-vars.sh
-             ls ${{ github.workspace }}
-             echo ${{ env.AZURE_CLIENT_ID }}
-             echo ${{ env.AZURE_SUBSCRIPTION_ID }}
-             echo ${{ env.AZURE_TENANT_ID }}
-             echo ${{ env.VNET_NAME }}
-             echo ${{ env.RG_NAME }}
-
-          
-    
+      - name: 'Run az commands'
+        run: |
+          az account show
+          az group list
