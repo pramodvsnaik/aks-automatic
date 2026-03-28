@@ -32,6 +32,7 @@ jobs:
       - name: 'Set ENV Variables'
         run: |
            bash automatic/custom-network/public/sh/define-vars.sh
+           echo  "${RG_NAME} -l ${LOCATION}"
            bash automatic/custom-network/public/sh/create-rg.sh
           # bash automatic/custom-network/public/sh/create-uami.sh
           # bash automatic/custom-network/public/sh/create-vnet.sh
