@@ -12,6 +12,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+
+      - name: 'Checking out repo code'
+        uses: actions/checkout@v6
+      
       - name: 'Az CLI login'
         uses: azure/login@8c334a195cbb38e46038007b304988d888bf676a
         with:
