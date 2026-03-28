@@ -23,3 +23,7 @@ jobs:
         run: |
           az account show
           az group list
+
+      - name: 'Set ENV Variables'
+        run: ${{ github.workspace}}/automatic/custom-network/public/sh/define-vars.sh 
+          
