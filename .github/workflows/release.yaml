@@ -31,17 +31,9 @@ jobs:
 
       - name: 'Set ENV Variables'
         run: |
-          pwd
-          bash automatic/custom-network/public/sh/define-vars.sh
-          printenv | sort
+           bash automatic/custom-network/public/sh/define-vars.sh
            bash automatic/custom-network/public/sh/create-rg.sh
-           bash automatic/custom-network/public/sh/create-uami.sh
-           bash automatic/custom-network/public/sh/create-vnet.sh
-           bash automatic/custom-network/public/sh/create-aks.sh
-          
-      - name: 'Set ENV Variables'
-        run: |
-         echo "${{ env.RG_NAME }}"
-         echo "${{ env.VNET_NAME }}"
-         echo "${{ env.CLUSTER_NAME }}"
-         echo "${{ env.IDENTITY_NAME }}"
+          # bash automatic/custom-network/public/sh/create-uami.sh
+          # bash automatic/custom-network/public/sh/create-vnet.sh
+          # bash automatic/custom-network/public/sh/create-aks.sh
+
