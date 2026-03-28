@@ -20,11 +20,20 @@ jobs:
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
             subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
             
-        - name: deploy-aks
+        - name: deploy-aks-echo1
+          run:  echo "Set Environment Variables"
+           
+        - name: deploy-aks-echo2
           run: |
-           echo "Set Environment Variables"
-           ls ${{github.workspace}}
-           ${{github.workspace}}/automatic/custom-network/private/sh/define-vars.sh
-           echo ${RG_NAME}
-           echo ${VNET_NAME} 
+             ls ${{github.workspace}}
+             echo ${AZURE_CLIENT_ID}
+             echo ${AZURE_SUBSCRIPTION_ID}
+             echo ${AZURE_TENANT_ID}
+             echo ${VNET_NAME}
+             echo ${RG_NAME}
+
+        - name: deploy-aks1
+          run: |
+            ${{github.workspace}}/automatic/custom-network/private/sh/define-vars.sh
+          
     
