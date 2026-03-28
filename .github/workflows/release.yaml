@@ -4,7 +4,7 @@ on:
  
 permissions:
   id-token: write
-  contents: read
+
   
 jobs:
   deploy-aks-automatic:
@@ -13,32 +13,29 @@ jobs:
         - name: checkout
           uses: actions/checkout@v6.0.2
 
-        - name: deploy-aks-echo2
-          run: |
-             echo ${{github.workspace}}
-             echo ${{secrets}}
-            
-        - name: deploy-aks-echo1
-          run:  echo "Set Environment Variables"
-
         - name: Azure Login
           uses: Azure/login@v3
           with:
             client-id: ${{ secrets.AZURE_CLIENT_ID }}
             tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-           
-        - name: deploy-aks-echo2
-          run: |
-             ls ${{github.workspace}}
-             echo ${AZURE_CLIENT_ID}
-             echo ${AZURE_SUBSCRIPTION_ID}
-             echo ${AZURE_TENANT_ID}
-             echo ${VNET_NAME}
-             echo ${RG_NAME}
+            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  
 
+        - name: deploy-aks-echo2
+          uses:  azure/cli@v2
+          with:
+            azcliversion: latest
+            inlineScript: |
+               az account show
+ 
         - name: deploy-aks1
           run: |
             ${{github.workspace}}/automatic/custom-network/private/sh/define-vars.sh
+             ls ${{ github.workspace }}
+             echo ${{ env.AZURE_CLIENT_ID }}
+             echo ${{ env.AZURE_SUBSCRIPTION_ID }}
+             echo ${{ env.AZURE_TENANT_ID }}
+             echo ${{ env.VNET_NAME }}
+             echo ${{ env.RG_NAME }}
+
           
     
