@@ -1,0 +1,18 @@
+name: deploy-aks-automatic
+on:
+    workflow_dispatch:
+    
+jobs:
+  deploy-aks-automatic:
+    runs-on: unbuntu-latest
+    steps:
+        - name: checkout
+          uses: actions/checkouts@v2
+
+        - name: deploy-aks
+          run: |
+           echo "Set Environment Variables"
+           ../automatic/custom-network/private/sh/define-vars.sh
+           echo ${RG_NAME}
+           echo ${VNET_NAME}        
+    
