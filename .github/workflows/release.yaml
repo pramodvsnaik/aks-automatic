@@ -34,10 +34,10 @@ jobs:
           pwd
           bash automatic/custom-network/public/sh/define-vars.sh
           printenv | sort
-          # bash automatic/custom-network/public/sh/create-rg.sh
-          # bash automatic/custom-network/public/sh/create-uami.sh
-          # bash automatic/custom-network/public/sh/create-vnet.sh
-          # bash automatic/custom-network/public/sh/create-aks.sh
+           bash automatic/custom-network/public/sh/create-rg.sh
+           bash automatic/custom-network/public/sh/create-uami.sh
+           bash automatic/custom-network/public/sh/create-vnet.sh
+           bash automatic/custom-network/public/sh/create-aks.sh
           
       - name: 'Set ENV Variables'
         run: |
