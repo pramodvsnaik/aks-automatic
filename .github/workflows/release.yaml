@@ -32,8 +32,9 @@ jobs:
         run: |
           pwd
           bash automatic/custom-network/public/sh/define-vars.sh
-          bash automatic/custom-network/public/sh/create-rg.sh
-          bash automatic/custom-network/public/sh/create-uami.sh
-          bash automatic/custom-network/public/sh/create-vnet.sh
-          bash automatic/custom-network/public/sh/create-aks.sh
+          printenv | sort
+          # bash automatic/custom-network/public/sh/create-rg.sh
+          # bash automatic/custom-network/public/sh/create-uami.sh
+          # bash automatic/custom-network/public/sh/create-vnet.sh
+          # bash automatic/custom-network/public/sh/create-aks.sh
         
