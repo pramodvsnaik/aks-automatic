@@ -12,7 +12,8 @@ jobs:
         - name: deploy-aks
           run: |
            echo "Set Environment Variables"
-           ../automatic/custom-network/private/sh/define-vars.sh
+           ls ${{github.workspace}}
+           ${{github.workspace}}/automatic/custom-network/private/sh/define-vars.sh
            echo ${RG_NAME}
            echo ${VNET_NAME}        
     
