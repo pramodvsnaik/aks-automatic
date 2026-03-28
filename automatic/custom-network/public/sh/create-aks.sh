@@ -1,3 +1,10 @@
+#!/bin/bash
+RG_NAME=$1
+LOCATION=$2
+VNET_NAME=$3
+IDENTITY_NAME=$4
+
+
 az aks create \
 --resource-group ${RG_NAME} \
 --name ${CLUSTER_NAME} \
