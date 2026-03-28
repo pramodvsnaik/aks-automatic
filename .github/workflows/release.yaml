@@ -31,7 +31,12 @@ jobs:
 
       - name: 'Set ENV Variables'
         run: |          
-          automatic/custom-network/private/sh/define-vars.sh
+         RG_NAME=automatic-rg
+         VNET_NAME=automatic-vnet
+         CLUSTER_NAME=automatic
+         IDENTITY_NAME=automatic-uami
+         LOCATION=eastus
+         SUBSCRIPTION_ID=${{ secrets.AZURE_SUBSCRIPTION_ID }}
           echo "${RG_NAME} -l ${LOCATION} ${IDENTITY_NAME} ${CLUSTER_NAME}"
           automatic/custom-network/public/sh/create-rg.sh ${RG_NAME} ${LOCATION}
           automatic/custom-network/public/sh/create-uami.sh ${RG_NAME} ${LOCATION} ${IDENTITY_NAME}
