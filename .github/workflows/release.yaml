@@ -26,6 +26,7 @@ jobs:
 
       - name: 'Set ENV Variables'
         run: |
-         ls  -a 
+         pwd
+         ls -R
          bash automatic/custom-network/public/sh/define-vars.sh 
           
