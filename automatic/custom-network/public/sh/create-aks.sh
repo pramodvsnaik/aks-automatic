@@ -3,6 +3,7 @@ RG_NAME=$1
 LOCATION=$2
 VNET_NAME=$3
 IDENTITY_NAME=$4
+CLUSTER_NAME=$5
 
 
 az aks create \
