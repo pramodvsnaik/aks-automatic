@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: checkout
-          uses: actions/checkouts@v2
-
+          uses: actions/checkout@v6.0.2
+          
         - name: deploy-aks
           run: |
            echo "Set Environment Variables"
